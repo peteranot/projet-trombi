@@ -10,11 +10,29 @@ class compagnie {
      * @return 
      */
     public function get(){
-        global $connect_db; 
+        global $connect_db;
+        $req = "SELECT * from section" ; 
+        $resSection = $connect_db->query($req); 
 
+        return $resSection; 
     }
 
-	
+	    /**
+     * function get 
+     * 
+	 * @param
+     * @return 
+     */
+    public function getSectionByCompagnie(){
+        global $connect_db;
+        $req = "SELECT  C.name, S.name
+				FROM `compagnie` C, `section` S
+				WHERE C.id_compagnie=S.id_compagnie"; 
+        $resSectionByCompagnie = $connect_db->query($req); 
+
+        return $resSectionByCompagnie; 
+
+    }
 
     /**
      * function create 
@@ -35,7 +53,6 @@ class compagnie {
      * 
 	 * @param
      * @return 
-     */
      */
     public function  delete(){  
         global $connect_db; 

@@ -10,11 +10,16 @@ class compagnie {
      * @return 
      */
     public function get(){
-        global $connect_db; 
+        global $connect_db;
+        $req = "SELECT * from compagnie" ; 
+        $resCompagnie = $connect_db->query($req); 
+
+        return $resCompagnie; 
 
     }
 
-	
+
+
 
     /**
      * function create 
@@ -35,7 +40,6 @@ class compagnie {
      * 
 	 * @param
      * @return 
-     */
      */
     public function  delete(){  
         global $connect_db; 

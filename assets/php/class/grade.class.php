@@ -1,7 +1,7 @@
 <?php
 include __DIR__."./../connexion.php";
 
-class compagnie {
+class grade {
     
     /**
      * function get 
@@ -11,7 +11,12 @@ class compagnie {
      */
     public function get(){
         global $connect_db; 
+        //$req : sql requete get all grade 
+        $req = "SELECT * from grade" ; 
+		//$resIles : execute sql requete
+        $resGrade = $connect_db->query($req); 
 
+        return $resGrade;
     }
 
 	
@@ -35,7 +40,6 @@ class compagnie {
      * 
 	 * @param
      * @return 
-     */
      */
     public function  delete(){  
         global $connect_db; 

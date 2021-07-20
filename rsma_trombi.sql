@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 30 juin 2021 à 02:26
+-- Généré le : mar. 20 juil. 2021 à 02:44
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 7.4.14
 
@@ -29,8 +29,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `compagnie` (
   `id_compagnie` int(11) NOT NULL,
-  `name` int(11) NOT NULL
+  `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `compagnie`
+--
+
+INSERT INTO `compagnie` (`id_compagnie`, `name`) VALUES
+(1, 'CCFPLI'),
+(2, 'CFP1');
 
 -- --------------------------------------------------------
 
@@ -50,7 +58,7 @@ CREATE TABLE `filiere` (
 --
 
 INSERT INTO `filiere` (`id_filiere`, `name`, `description`, `id_section`) VALUES
-(1, 'PETERANO', 'Développeur web', NULL);
+(1, 'D-WEB', 'Développeur web', 3);
 
 -- --------------------------------------------------------
 
@@ -62,6 +70,14 @@ CREATE TABLE `grade` (
   `id_grade` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `grade`
+--
+
+INSERT INTO `grade` (`id_grade`, `name`) VALUES
+(1, 'Marsouin'),
+(2, 'Marsouin de 1er Classe');
 
 -- --------------------------------------------------------
 
@@ -75,6 +91,15 @@ CREATE TABLE `section` (
   `id_compagnie` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `section`
+--
+
+INSERT INTO `section` (`id_section`, `name`, `id_compagnie`) VALUES
+(1, 'Section 1', 1),
+(2, 'Section 2', 1),
+(3, 'Section 3', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -83,17 +108,25 @@ CREATE TABLE `section` (
 
 CREATE TABLE `volontaire` (
   `id_volontaire` int(11) NOT NULL,
-  `firstname` varchar(100) NOT NULL,
-  `lastname` varchar(100) NOT NULL,
-  `birthday` date NOT NULL,
-  `phone` int(11) NOT NULL,
-  `home` varchar(100) NOT NULL,
+  `img` text DEFAULT NULL,
+  `firstname` varchar(100) DEFAULT NULL,
+  `lastname` varchar(100) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  `phone` varchar(50) DEFAULT NULL,
+  `home` varchar(100) DEFAULT NULL,
   `contact_firstname` varchar(100) DEFAULT NULL,
   `contact_lastname` varchar(100) DEFAULT NULL,
   `contact_phone` varchar(100) DEFAULT NULL,
-  `id_grade` int(11) NOT NULL,
-  `id_filiere` int(11) NOT NULL
+  `id_grade` int(11) DEFAULT NULL,
+  `id_filiere` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `volontaire`
+--
+
+INSERT INTO `volontaire` (`id_volontaire`, `img`, `firstname`, `lastname`, `birthday`, `phone`, `home`, `contact_firstname`, `contact_lastname`, `contact_phone`, `id_grade`, `id_filiere`) VALUES
+(27, 'peterano.jpg', 'PETERANO', 'Terehaunui', '2021-07-14', '89 54 42 10', NULL, 'PETERANO', 'Edwin', '87 28 76 90', 2, 1);
 
 --
 -- Index pour les tables déchargées
@@ -140,31 +173,31 @@ ALTER TABLE `volontaire`
 -- AUTO_INCREMENT pour la table `compagnie`
 --
 ALTER TABLE `compagnie`
-  MODIFY `id_compagnie` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_compagnie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `filiere`
 --
 ALTER TABLE `filiere`
-  MODIFY `id_filiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_filiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `section`
 --
 ALTER TABLE `section`
-  MODIFY `id_section` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_section` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `volontaire`
 --
 ALTER TABLE `volontaire`
-  MODIFY `id_volontaire` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_volontaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Contraintes pour les tables déchargées

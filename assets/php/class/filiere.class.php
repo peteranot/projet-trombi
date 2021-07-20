@@ -13,9 +13,9 @@ class filiere {
 		global $connect_db; 
 
         $req = "SELECT * from filiere" ; 
-        $res = $connect_db->query($req); 
+        $resFiliere = $connect_db->query($req); 
 
-        return $res;
+        return $resFiliere;
     }
 
 	
