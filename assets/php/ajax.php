@@ -1,15 +1,15 @@
 <?php
 
-	include 'class/classIles.php';
+	include 'class/section.class.php';
 
-	$iles_obj = new iles();
+	$iles_obj = new section();
 
 	//get ile
-	$getCompagnie = $_POST['getCompagnie'];
+	$getCompagnie = $_POST['getSection'];
 
 	//get villes by ile
-	$res_getcity = $iles_obj->getSectionByCompagnie($getCompagnie);
+	$res_getcompagnie = $iles_obj->getSectionByCompagnie($getCompagnie);
 
 
-	echo $res_getcity;
+	echo $res_getcompagnie;
 

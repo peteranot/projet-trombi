@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 20 juil. 2021 à 02:44
+-- Généré le : ven. 23 juil. 2021 à 01:43
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 7.4.14
 
@@ -38,7 +38,8 @@ CREATE TABLE `compagnie` (
 
 INSERT INTO `compagnie` (`id_compagnie`, `name`) VALUES
 (1, 'CCFPLI'),
-(2, 'CFP1');
+(2, 'CFP1'),
+(4, 'CFP2');
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,9 @@ CREATE TABLE `filiere` (
 --
 
 INSERT INTO `filiere` (`id_filiere`, `name`, `description`, `id_section`) VALUES
-(1, 'D-WEB', 'Développeur web', 3);
+(1, 'D-WEB', 'Développeur Web', 7),
+(4, 'MATH', 'Métier Accueil Tourisme Hôtellerie', 7),
+(8, 'AAD', 'Agent Administration', 7);
 
 -- --------------------------------------------------------
 
@@ -77,7 +80,10 @@ CREATE TABLE `grade` (
 
 INSERT INTO `grade` (`id_grade`, `name`) VALUES
 (1, 'Marsouin'),
-(2, 'Marsouin de 1er Classe');
+(6, 'Marsouin de 1er Classe'),
+(7, 'Caporal'),
+(8, 'Caporal-Chef'),
+(9, 'Caporal-Chef de 1er Classe');
 
 -- --------------------------------------------------------
 
@@ -96,9 +102,9 @@ CREATE TABLE `section` (
 --
 
 INSERT INTO `section` (`id_section`, `name`, `id_compagnie`) VALUES
-(1, 'Section 1', 1),
-(2, 'Section 2', 1),
-(3, 'Section 3', 1);
+(2, 'Section 1', 1),
+(5, 'Section 2', 1),
+(7, 'Section 3', 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +132,17 @@ CREATE TABLE `volontaire` (
 --
 
 INSERT INTO `volontaire` (`id_volontaire`, `img`, `firstname`, `lastname`, `birthday`, `phone`, `home`, `contact_firstname`, `contact_lastname`, `contact_phone`, `id_grade`, `id_filiere`) VALUES
-(27, 'peterano.jpg', 'PETERANO', 'Terehaunui', '2021-07-14', '89 54 42 10', NULL, 'PETERANO', 'Edwin', '87 28 76 90', 2, 1);
+(59, 'charpentier.jpg', 'CHARPENTIER', 'Nato', '2001-11-14', '89673399', 'ARUE', 'CHARPENTIER', 'Franck', '89719236', 1, 1),
+(60, 'faatau.jpg', 'FAATAU', 'Teheetua', '1996-05-01', '87290706', 'Papara', 'DELPUECH', 'Natacha', '87786884', 1, 1),
+(61, 'ie.jpg', 'IE', 'Manutahi', '2000-01-27', '87756556', NULL, 'IE', 'Ruita', '89231491', 1, 1),
+(62, 'mahatia.jpg', 'MAHATIA', 'Oariiterai', '2001-10-02', '87256872', NULL, 'UEVA', 'Hinamareva', '87768677', 1, 1),
+(63, 'peterano.jpg', 'PETERANO', 'Terehaunui', '1998-10-09', '89544210', NULL, 'PETERANO', 'Angéla', '87722542', 1, 1),
+(64, 'poetai.jpg', 'POETAI', 'Teriimana', '2001-10-06', '89540618', NULL, 'POETAI', 'Gaêlle', '89206883', 1, 1),
+(65, 'raoulx.jpg', 'RAOULX', 'Ranihei', '1997-06-25', '8730343', NULL, 'RAOULX', 'Caroline', '87701313', 1, 1),
+(66, 'tautu.jpg', 'TAUTU', 'Vaimiti', '1998-04-24', '87772726', NULL, 'TAUTU', 'Manix', '87211807', 1, 1),
+(67, 'tuahou.jpg', 'TUAHU', 'Wilfred', '1999-01-27', '89673399', NULL, 'ROBSON', 'Sophia', '87373492', 1, 1),
+(68, 'vanaa.jpg', 'VANAA', 'Jubilé', '1998-01-27', '89673399', NULL, 'VANAA', 'Louise', '87730788', 1, 1),
+(69, '', 'MATH', 'IA', '2021-07-03', '89000000', NULL, 'TEST', 'Icule', '89206883', 1, 4);
 
 --
 -- Index pour les tables déchargées
@@ -142,7 +158,8 @@ ALTER TABLE `compagnie`
 -- Index pour la table `filiere`
 --
 ALTER TABLE `filiere`
-  ADD PRIMARY KEY (`id_filiere`);
+  ADD PRIMARY KEY (`id_filiere`),
+  ADD KEY `FK_filiere_section` (`id_section`);
 
 --
 -- Index pour la table `grade`
@@ -173,31 +190,31 @@ ALTER TABLE `volontaire`
 -- AUTO_INCREMENT pour la table `compagnie`
 --
 ALTER TABLE `compagnie`
-  MODIFY `id_compagnie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_compagnie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `filiere`
 --
 ALTER TABLE `filiere`
-  MODIFY `id_filiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_filiere` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_grade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `section`
 --
 ALTER TABLE `section`
-  MODIFY `id_section` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_section` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `volontaire`
 --
 ALTER TABLE `volontaire`
-  MODIFY `id_volontaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_volontaire` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- Contraintes pour les tables déchargées
@@ -207,7 +224,7 @@ ALTER TABLE `volontaire`
 -- Contraintes pour la table `filiere`
 --
 ALTER TABLE `filiere`
-  ADD CONSTRAINT `FK_filiere_section` FOREIGN KEY (`id_section`) REFERENCES `section` (`id_section`);
+  ADD CONSTRAINT `FK_filiere_section` FOREIGN KEY (`id_section`) REFERENCES `section` (`id_section`) ON DELETE SET NULL;
 
 --
 -- Contraintes pour la table `section`
